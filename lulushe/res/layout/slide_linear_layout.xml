@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <LinearLayout
+        android:id="@+id/view_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:clickable="true" 
+        android:id="@+id/layout_btn"
+        >
+
+        <TextView
+            android:id="@+id/appoint"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="预约"
+            android:textColor="@color/white" 
+            android:minWidth="80dp"
+            />
+        
+         <TextView
+            android:id="@+id/delete"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/appoint"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/white" 
+            android:layout_marginLeft="1px"
+            android:minWidth="80dp"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+</merge>

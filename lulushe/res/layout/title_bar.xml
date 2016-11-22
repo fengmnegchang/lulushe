@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/title_bar_padding"
+    android:paddingLeft="@dimen/title_bar_padding"
+    android:paddingRight="@dimen/title_bar_padding"
+    android:paddingTop="@dimen/title_bar_padding" 
+    android:background="@android:color/black"
+    android:id="@+id/parent_layout"
+    >
+
+    <!-- 消息条数 -->
+    <RelativeLayout
+        android:id="@+id/msg_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/msg_bt"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/title_bar_msg"
+            android:adjustViewBounds="true"
+             />
+
+        <TextView
+            android:id="@+id/msg_nums"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/msg_bt"
+            android:layout_alignTop="@+id/msg_bt"
+            android:background="@drawable/title_bar_msg_nums"
+            android:textColor="@color/white" 
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:clickable="false"
+            android:focusable="false"
+            />
+    </RelativeLayout>
+
+    <!--返回按钮 -->
+    <LinearLayout
+        android:id="@+id/LinBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/ivBackTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_bar_padding"
+            android:gravity="center"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_base_size" />
+    </LinearLayout>
+
+     <!--标题-->
+    <TextView
+        android:id="@+id/titleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_bar_text_size" 
+        android:focusable="false"
+        />
+
+    
+    <!--右侧筛选-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="1dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="1dp"
+        android:visibility="gone"
+        android:id="@+id/select_layout"
+         >
+        <TextView
+            android:id="@+id/select_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/title_bar_select"
+            android:textColor="@color/white"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/text_base_size" />
+    </LinearLayout>
+
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="1dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="1dp"
+        android:id="@+id/setting"
+        android:src="@drawable/title_bar_setting"
+        android:visibility="gone"
+         />
+</RelativeLayout>
