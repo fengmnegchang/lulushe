@@ -17,9 +17,11 @@ import com.fgj.lulushe.activity.menu.HomeFragment;
 import com.fgj.lulushe.activity.menu.MessageFragment;
 import com.fgj.lulushe.activity.menu.SettingsFragment;
 import com.fgj.lulushe.activity.menu.VodlistFragment;
+import com.fgj.lulushe.activity.util.UrlUtils;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
-
+	
+	
     private ResideMenu resideMenu;
     private MainActivity mContext;
     private ResideMenuItem itemDianying,itemLuyou,itemAsia,itemEurope,itemLesbian
@@ -37,7 +39,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mContext = this;
         setUpMenu();
         if( savedInstanceState == null )
-            changeFragment(new HomeFragment("http://www.xixilu.com/dianying.html"),getString(R.string.menu_left_dianying));
+            changeFragment(new HomeFragment(UrlUtils.LULUSHE_URL+"/vod/index.html"),getString(R.string.menu_left_dianying));
     }
 
     private void setUpMenu() {
@@ -114,30 +116,49 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         return resideMenu.dispatchTouchEvent(ev);
     }
 
+    /**
+     * <div class="newnav">
+  <div class="navmenu dy">
+    <ul>
+      <li class="homea"><a class="sdy">电影</a></li>
+      <li class="item"><a href="/vod/index.html" title="电影" target="_blank">电影首页</a></li>
+      <li class="item"><a href="/list/1.html" title="亚洲情色" target="_blank">亚洲情色</a></li>
+      <li class="item"><a href="/list/2.html" title="制服丝袜" target="_blank">制服丝袜</a></li>
+      <li class="item"><a href="/list/3.html" title="欧美性爱" target="_blank">欧美性爱</a></li>
+      <li class="item"><a href="/list/4.html" title="网友自拍" target="_blank">网友自拍</a></li>
+      <li class="item"><a href="/list/5.html" title="经典三级" target="_blank">经典三级</a></li>
+      <li class="item"><a href="/list/6.html" title="乱伦虐待" target="_blank">乱伦虐待</a></li>
+      <li class="item"><a href="/list/7.html" title="另类变态" target="_blank">另类变态</a></li>
+      <li class="item"><a href="/list/8.html" title="成人动漫" target="_blank">成人动漫</a></li>
+      <li class="item"><a href="/list/14.html" title="在线视频" target="_blank">在线视频</a></li>
+    </ul>
+  </div>
+
+     */
     @Override
     public void onClick(View view) {
         if (view == itemDianying){
-            changeFragment(new HomeFragment("http://www.xixilu.com/dianying.html"),  getString(R.string.menu_left_dianying));
+            changeFragment(new HomeFragment(UrlUtils.LULUSHE_URL+"/vod/index.html"),  getString(R.string.menu_left_dianying));
         }else if (view == itemLuyou){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/2_1.html"),  getString(R.string.menu_left_luyou));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/4.html"),  getString(R.string.menu_left_luyou));
         }else if (view == itemAsia){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/1_1.html"), getString(R.string.menu_left_asia));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/1.html"), getString(R.string.menu_left_asia));
         }else if (view == itemEurope){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/3_1.html"), getString(R.string.menu_left_europe));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/3.html"), getString(R.string.menu_left_europe));
         }else if (view == itemLesbian){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/10_1.html"), getString(R.string.menu_left_lesbian));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/7.html"), getString(R.string.menu_left_lesbian));
         }else if (view == itemIncestabuse){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/5_1.html"), getString(R.string.menu_left_incestabuse));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/6.html"), getString(R.string.menu_left_incestabuse));
         }else if (view == itemUniform){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/6_1.html"), getString(R.string.menu_left_uniform));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/2.html"), getString(R.string.menu_left_uniform));
         }else if (view == itemClassiccode){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/9_1.html"), getString(R.string.menu_left_classiccode));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/8.html"), getString(R.string.menu_left_classiccode));
         }else if (view == itemClassicthree){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/7_1.html"), getString(R.string.menu_left_classicthree));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/5.html"), getString(R.string.menu_left_classicthree));
         }else if (view == itemLatest){
-            changeFragment(new VodlistFragment("http://www.xixilu.us/vodlist/11_1.html"), getString(R.string.menu_left_latest));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/14.html"), getString(R.string.menu_left_latest));
         }else if (view == itemMessage){
-            changeFragment(new MessageFragment("http://home.xixilu.org/gb-.html"), getString(R.string.menu_left_message));
+            changeFragment(new MessageFragment(UrlUtils.LULUSHE_URL+"/gb-.html"), getString(R.string.menu_left_message));
         }else if (view == itemSettings){
             changeFragment(new SettingsFragment(), getString(R.string.menu_right_settings));
         }

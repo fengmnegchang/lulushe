@@ -1,15 +1,10 @@
 package com.fgj.lulushe.activity;
 
-import com.fgj.lulushe.LulusheAppcation;
-import com.fgj.lulushe.R;
-import com.fgj.lulushe.activity.util.CommTool;
-import com.fgj.lulushe.activity.view.TitleBar;
-
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -18,6 +13,11 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.fgj.lulushe.LulusheAppcation;
+import com.fgj.lulushe.R;
+import com.fgj.lulushe.activity.util.CommTool;
+import com.fgj.lulushe.activity.view.TitleBar;
+
 
 /**
  * @author sunShine
@@ -25,7 +25,7 @@ import android.widget.RelativeLayout;
  * @description 所有activity都继承此类
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
 	private LinearLayout linContainers;
 	private View viewContent;

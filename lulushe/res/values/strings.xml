@@ -12,16 +12,27 @@
     <string name="title_bar_select">筛选</string>
     
     
-    <string name="menu_left_dianying">首页</string>
-    <string name="menu_left_luyou">撸友自拍</string>
+    <!-- <li class="homea"><a class="sdy">电影</a></li>
+      <li class="item"><a href="/vod/index.html" title="电影" target="_blank">电影首页</a></li>
+      <li class="item"><a href="/list/1.html" title="亚洲情色" target="_blank">亚洲情色</a></li>
+      <li class="item"><a href="/list/2.html" title="制服丝袜" target="_blank">制服丝袜</a></li>
+      <li class="item"><a href="/list/3.html" title="欧美性爱" target="_blank">欧美性爱</a></li>
+      <li class="item"><a href="/list/4.html" title="网友自拍" target="_blank">网友自拍</a></li>
+      <li class="item"><a href="/list/5.html" title="经典三级" target="_blank">经典三级</a></li>
+      <li class="item"><a href="/list/6.html" title="乱伦虐待" target="_blank">乱伦虐待</a></li>
+      <li class="item"><a href="/list/7.html" title="另类变态" target="_blank">另类变态</a></li>
+      <li class="item"><a href="/list/8.html" title="成人动漫" target="_blank">成人动漫</a></li>
+      <li class="item"><a href="/list/14.html" title="在线视频" target="_blank">在线视频</a></li> -->
+    <string name="menu_left_dianying">电影首页</string>
     <string name="menu_left_asia">亚洲情色</string>
+     <string name="menu_left_uniform">制服丝袜</string>
     <string name="menu_left_europe">欧美性爱</string>
-    <string name="menu_left_lesbian">女同性恋</string>
+    <string name="menu_left_luyou">网友自拍</string>
+   <string name="menu_left_classicthree">经典三级</string>
     <string name="menu_left_incestabuse">乱伦虐待</string>
-    <string name="menu_left_uniform">制服丝袜</string>
-    <string name="menu_left_classiccode">经典有码</string>
-    <string name="menu_left_classicthree">经典三级</string>
-    <string name="menu_left_latest">最新转载</string>
+    <string name="menu_left_lesbian">另类变态</string>
+    <string name="menu_left_classiccode">成人动漫</string>
+    <string name="menu_left_latest">在线视频</string>
     <string name="menu_left_message">求片留言</string>
     <string name="menu_right_settings">设置</string>
 </resources>

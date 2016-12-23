@@ -191,15 +191,15 @@ public class VodMediaActivity extends BaseActivity {
 			href = _MakeURL(href, page);
 			Log.i("url", "url = " + href);
 			Document doc = Jsoup.connect(href).timeout(10000).get();
-			Element masthead = doc.select("div.play-nr-l").first();
-			Elements articleElements = masthead.select("div.nr-box");
+			Element masthead = doc.select("div.view").first();
+			Elements articleElements = masthead.select("div.view");
 			for (int i = 0; i < articleElements.size(); i++) {
 				Vodlist article = new Vodlist();
 				Element articleElement = articleElements.get(i);
 				// ArrayList<String> imgUrl = new ArrayList<String>();
 				try {
 					Element boxlElement = articleElement
-							.select("div.nr-box-dh").first();
+							.select("div.info").first();
 					String title = boxlElement.text();
 					article.setTitle(title);
 				} catch (Exception e) {
@@ -207,11 +207,11 @@ public class VodMediaActivity extends BaseActivity {
 				}
 
 				try {
-					Element summaryElement = articleElement.select("div.vmain")
+					Element summaryElement = articleElement.select("div.info")
 							.first();
 					try {
 						Elements logoElement = summaryElement
-								.select("div.vpic");
+								.select("div.pic");
 						// article.setImageUrl(logoElement.attr("src"));
 						// imgUrl.add(logoElement.attr("src"));
 						article.setImageUrl(logoElement.attr("src"));
@@ -232,7 +232,7 @@ public class VodMediaActivity extends BaseActivity {
 			// 图片信息
 			try {
 				// ArrayList<String> imgUrl = new ArrayList<String>();
-				Element picElement = doc.select("div.jianjie").first();
+				Element picElement = doc.select("div.endtext").first();
 				// 图片
 				Element imgElement = null;
 				String imgsrc = "";
@@ -244,7 +244,7 @@ public class VodMediaActivity extends BaseActivity {
 					if (imgElement != null) {
 						imgsrc = imgElement.attr("src");
 					}
-					article.setImageUrl(imgsrc);
+					article.setImageUrl("http:"+imgsrc);
 					articleList.add(article);
 				}
 			} catch (Exception ex) {

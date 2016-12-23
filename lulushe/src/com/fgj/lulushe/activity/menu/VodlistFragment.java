@@ -13,6 +13,7 @@ import org.jsoup.select.Elements;
 import com.fgj.lulushe.LulusheAppcation;
 import com.fgj.lulushe.R;
 import com.fgj.lulushe.activity.VodMediaActivity;
+import com.fgj.lulushe.activity.util.UrlUtils;
 import com.fgj.lulushe.entity.Vodlist;
 import com.fgj.lulushe.imageloader.ImageLoader;
 import com.fgj.lulushe.sidesliplistview.PullToRefreshListView;
@@ -148,16 +149,44 @@ public class VodlistFragment extends Fragment {
 			href = _MakeURL(href, page);
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.zy-box").first();
-		    Elements articleElements =  masthead.select("div.list-pianyuan-box");		
+		    Element masthead = doc.select("ul.mlist").first();
+		    Elements articleElements =  masthead.select("li");		
 		    for(int i = 0; i < articleElements.size(); i++) {
 		    	Vodlist article = new Vodlist();
 			    Element articleElement = articleElements.get(i);
-			    
+			    /**
+			     * <div class="pagelist">
+    <!-- 筛选开始 -->
+    <div class="filter">
+      <div class="title"><b>当前位置：<a href='/'>首页</a>&nbsp;&nbsp;<a href="/">千百撸</a> > 亚洲情色</b></div>
+    </div>
+    <div class="movielist">
+      <div class="pagepre">        <p>共找到<span>6206</span>个视频</p>
+
+      </div>
+      <ul class="mlist">
+<li>
+<a href="/vod/11076.html" title="最新HEYZO 1353 他人妻味~妖艶美女诱惑~[江波りゅう]" target="_blank" class="p"><img src="//i3.1100lu.xyz/vod/2016-12-23/585c0b00a8f3a.jpg" alt="最新HEYZO 1353 他人妻味~妖艶美女诱惑~[江波りゅう]" /></a>
+<div class="info"><h2><a href="/vod/11076.html" title="最新HEYZO 1353 他人妻味~妖艶美女诱惑~[江波りゅう]" target="_blank">最新HEYZO 1353 他</a><em></em></h2>
+<p><i>更新：2016-12-23</i></p>
+<p><i>类型：亚洲情色</i></p>
+<p><i>撸量：0</i></p>
+<span><a href="/vod/11076.html#kan" target="_blank">观看</a><a href="/vod/11076.html#down" target="_blank">下载</a></span></div>
+</li>
+
+<li>
+<a href="/vod/11075.html" title="最新东京热 Tokyo Hot n1209 鬼逝~[田辺美咲]" target="_blank" class="p"><img src="//i3.1100lu.xyz/vod/2016-12-23/585c0ae9d57ff.jpg" alt="最新东京热 Tokyo Hot n1209 鬼逝~[田辺美咲]" /></a>
+<div class="info"><h2><a href="/vod/11075.html" title="最新东京热 Tokyo Hot n1209 鬼逝~[田辺美咲]" target="_blank">最新东京热 Tokyo </a><em></em></h2>
+<p><i>更新：2016-12-23</i></p>
+<p><i>类型：亚洲情色</i></p>
+<p><i>撸量：0</i></p>
+<span><a href="/vod/11075.html#kan" target="_blank">观看</a><a href="/vod/11075.html#down" target="_blank">下载</a></span></div>
+</li>
+			     */
 			    try {
-			    	Element boxlElement = articleElement.select("div.list-pianyuan-box-l").first();
+			    	Element boxlElement = articleElement.select("li").first();
 			    	Element aElement = boxlElement.select("a").first();
-			    	String url = "http://www.xixilu.us" + aElement.attr("href"); 
+			    	String url =  UrlUtils.LULUSHE_URL + aElement.attr("href"); 
 				    String title = aElement.attr("title");
 				    article.setTitle(title);
 				    article.setUrl(url);
@@ -171,7 +200,7 @@ public class VodlistFragment extends Fragment {
 					    if(imgElement != null){
 					    	imgsrc  = imgElement.attr("src");
 					    }
-					    article.setImageUrl(imgsrc);
+					    article.setImageUrl("http:"+imgsrc);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -181,7 +210,7 @@ public class VodlistFragment extends Fragment {
 				}
 			    
 			    try {
-			    	Element summaryElement = articleElement.select("div.list-pianyuan-box-r").first();
+			    	Element summaryElement = articleElement.select("div.info").first();
 			    	String summary = summaryElement.text();
 				    if(summary.length() > 2000)
 				    	summary = summary.substring(0, 2000);
@@ -200,9 +229,10 @@ public class VodlistFragment extends Fragment {
      		
 	private static String _MakeURL(String p_url, int page) {
 		//"http://www.xixilu.net/vodlist/1_1.html";
-		String vod = p_url.replace("http://www.xixilu.us/vodlist/", "").replace(".html", "");
+		String vod = p_url.replace( UrlUtils.LULUSHE_URL+"/list/", "").replace(".html", "");
 		String params[] = vod.split("_");
-		String url = "http://www.xixilu.us/vodlist/"+params[0]+"_"+page+".html?noscript";
+//		String url =  UrlUtils.LULUSHE_URL+"/list/"+params[0]+"_"+page+".html?noscript";
+		String url =  UrlUtils.LULUSHE_URL+"/list/"+params[0]+".html?noscript";
 		return url;
 	}
 	private static class VodlistAdapter extends BaseAdapter {
