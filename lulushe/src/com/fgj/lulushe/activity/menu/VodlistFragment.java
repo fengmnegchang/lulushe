@@ -141,6 +141,10 @@ public class VodlistFragment extends Fragment {
 	public ArrayList<Vodlist> parseVodlistList(String href, final int page) {
 		ArrayList<Vodlist> articleList = new ArrayList<Vodlist>();
 		try {
+			if(page>1){
+				href = href.replace(".html", "")+"-"+page+".html";
+			}
+			
 			href = _MakeURL(href, page);
 			Log.i("url", "url = " + href);
 			Document doc = Jsoup.connect(href).timeout(10000).get();
