@@ -47,7 +47,7 @@ public class VodlistFragment extends Fragment {
 	private static VodlistAdapter mAdapter;
 	private static ImageLoader mImageLoader;
 	private String href = "";
-
+	private int pageIndex=1;
 	public VodlistFragment() {
 		super();
 	}
@@ -89,7 +89,7 @@ public class VodlistFragment extends Fragment {
 			}
 
 			public void onLoadingMore() {
-				int pageIndex = mVodlistList.size() / 10 + 1;
+				pageIndex ++;
 				Log.i("pageIndex", "pageIndex = " + pageIndex);
 				loadNewsList(href, pageIndex, false);
 			}
@@ -111,11 +111,11 @@ public class VodlistFragment extends Fragment {
 						mVodlistList.add(article);
 					}
 					mAdapter.notifyDataSetChanged();
-					if (articleList.size() < 10) {
-						mListView.onLoadingMoreComplete(true);
-					} else if (articleList.size() == 10) {
+//					if (articleList.size() < 10) {
+//						mListView.onLoadingMoreComplete(true);
+//					} else if (articleList.size() == 10) {
 						mListView.onLoadingMoreComplete(false);
-					}
+//					}
 				}
 			}
 		};
