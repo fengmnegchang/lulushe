@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mContext = this;
         setUpMenu();
         if( savedInstanceState == null )
-            changeFragment(new HomeFragment(UrlUtils.LULUSHE_URL+"/vod/index.html"),getString(R.string.menu_left_dianying));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/4.html"),getString(R.string.menu_left_dianying));
     }
 
     private void setUpMenu() {
@@ -138,7 +138,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view == itemDianying){
-            changeFragment(new HomeFragment(UrlUtils.LULUSHE_URL+"/vod/index.html"),  getString(R.string.menu_left_dianying));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/4.html"),  getString(R.string.menu_left_dianying));
         }else if (view == itemLuyou){
             changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/4.html"),  getString(R.string.menu_left_luyou));
         }else if (view == itemAsia){
@@ -158,7 +158,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }else if (view == itemLatest){
             changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/list/14.html"), getString(R.string.menu_left_latest));
         }else if (view == itemMessage){
-            changeFragment(new MessageFragment(UrlUtils.LULUSHE_URL+"/gb-.html"), getString(R.string.menu_left_message));
+            changeFragment(new VodlistFragment(UrlUtils.LULUSHE_URL+"/gb-.html"), getString(R.string.menu_left_message));
         }else if (view == itemSettings){
             changeFragment(new SettingsFragment(), getString(R.string.menu_right_settings));
         }

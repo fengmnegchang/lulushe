@@ -41,14 +41,14 @@ public class VodMediaActivity extends BaseActivity {
 	private VodlistAdapter mAdapter;
 	private ImageLoader mImageLoader;
 
-//	private static class ViewHolder {
-//		public TextView title;
-//		public TextView summary;
-//		public ImageView image;
-//		public TextView postTime;
-//		// public LinearLayout layout;
-////		public ImageView img;
-//	}
+	// private static class ViewHolder {
+	// public TextView title;
+	// public TextView summary;
+	// public ImageView image;
+	// public TextView postTime;
+	// // public LinearLayout layout;
+	// // public ImageView img;
+	// }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +102,10 @@ public class VodMediaActivity extends BaseActivity {
 		mVodlistList = new ArrayList<Vodlist>();
 		// final String href = "http://www.xixilu.us/vodlist/1_1.html";
 		mImageLoader = new ImageLoader(this);
-		mImageLoader.setRequiredSize(5 * (int) getResources().getDimension(
-				R.dimen.litpic_width));
+		mImageLoader.setRequiredSize(5 * (int) getResources().getDimension(R.dimen.litpic_width));
 		mAdapter = new VodlistAdapter();
 		mListView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				// if(position > 0 && position <= mVodlistList.size()){
 				// Intent intent = new Intent(getActivity(),
 				// VodMediaActivity.class);
@@ -119,21 +117,22 @@ public class VodMediaActivity extends BaseActivity {
 				// getActivity().overridePendingTransition(R.anim.base_slide_right_in,
 				// R.anim.base_slide_remain);
 				// }
+				
+				WebViewActivity.startWebViewActivity(VodMediaActivity.this, href);
 			}
 		});
 		mListView.setAdapter(mAdapter);
-		mListView
-				.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
-					public void onRefresh() {
-						loadNewsList(href, 1, true);
-					}
+		mListView.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
+			public void onRefresh() {
+				loadNewsList(href, 1, true);
+			}
 
-					public void onLoadingMore() {
-						int pageIndex = mVodlistList.size() / 10 + 1;
-						Log.i("pageIndex", "pageIndex = " + pageIndex);
-						loadNewsList(href, 1, false);
-					}
-				});
+			public void onLoadingMore() {
+				int pageIndex = mVodlistList.size() / 10 + 1;
+				Log.i("pageIndex", "pageIndex = " + pageIndex);
+				loadNewsList(href, 1, false);
+			}
+		});
 		loadNewsList(href, 1, true);
 	}
 
@@ -143,16 +142,14 @@ public class VodMediaActivity extends BaseActivity {
 		overridePendingTransition(0, R.anim.base_slide_right_out);
 	}
 
-	private void loadNewsList(final String href, final int page,
-			final boolean isRefresh) {
+	private void loadNewsList(final String href, final int page, final boolean isRefresh) {
 		final Handler handler = new Handler() {
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
 					ArrayList<Vodlist> articleList = (ArrayList<Vodlist>) msg.obj;
 					if (isRefresh) {
 						mVodlistList.clear(); // 下拉刷新之前先将数据清空
-						mListView
-								.onRefreshComplete(new Date().toLocaleString());
+						mListView.onRefreshComplete(new Date().toLocaleString());
 					}
 					for (Vodlist article : articleList) {
 						mVodlistList.add(article);
@@ -198,8 +195,7 @@ public class VodMediaActivity extends BaseActivity {
 				Element articleElement = articleElements.get(i);
 				// ArrayList<String> imgUrl = new ArrayList<String>();
 				try {
-					Element boxlElement = articleElement
-							.select("div.info").first();
+					Element boxlElement = articleElement.select("div.info").first();
 					String title = boxlElement.text();
 					article.setTitle(title);
 				} catch (Exception e) {
@@ -207,11 +203,9 @@ public class VodMediaActivity extends BaseActivity {
 				}
 
 				try {
-					Element summaryElement = articleElement.select("div.info")
-							.first();
+					Element summaryElement = articleElement.select("div.info").first();
 					try {
-						Elements logoElement = summaryElement
-								.select("div.pic");
+						Elements logoElement = summaryElement.select("div.pic");
 						// article.setImageUrl(logoElement.attr("src"));
 						// imgUrl.add(logoElement.attr("src"));
 						article.setImageUrl(logoElement.attr("src"));
@@ -244,7 +238,7 @@ public class VodMediaActivity extends BaseActivity {
 					if (imgElement != null) {
 						imgsrc = imgElement.attr("src");
 					}
-					article.setImageUrl("http:"+imgsrc);
+					article.setImageUrl("http:" + imgsrc);
 					articleList.add(article);
 				}
 			} catch (Exception ex) {
@@ -284,24 +278,20 @@ public class VodMediaActivity extends BaseActivity {
 		}
 
 		public View getView(int position, View convertView, ViewGroup parent) {
-//			 ViewHolder viewHolder = null;
-//			 if (convertView == null) {
-			LayoutInflater layoutInflater = LayoutInflater
-					.from(LulusheAppcation.getAppcationCxt());
-//			 viewHolder = new ViewHolder();
-			convertView = layoutInflater.inflate(R.layout.item_vod_media_list,
-					null);
-			TextView title = (TextView) convertView.findViewById(R.id.title);
-			TextView summary = (TextView) convertView
-					.findViewById(R.id.summary);
-			ImageView image = (ImageView) convertView
-					.findViewById(R.id.image);
-//			LinearLayout layout = (LinearLayout) convertView
-//					.findViewById(R.id.layout);
-//			 convertView.setTag(viewHolder);
-//			 } else {
-//			 viewHolder = (ViewHolder) convertView.getTag();
-//			 }
+			// ViewHolder viewHolder = null;
+			// if (convertView == null) {
+			LayoutInflater layoutInflater = LayoutInflater.from(LulusheAppcation.getAppcationCxt());
+			// viewHolder = new ViewHolder();
+			View view = layoutInflater.inflate(R.layout.item_vod_media_list, null);
+			TextView title = (TextView) view.findViewById(R.id.title);
+			TextView summary = (TextView) view.findViewById(R.id.summary);
+			ImageView image = (ImageView) view.findViewById(R.id.image);
+			// LinearLayout layout = (LinearLayout) convertView
+			// .findViewById(R.id.layout);
+			// convertView.setTag(viewHolder);
+			// } else {
+			// viewHolder = (ViewHolder) convertView.getTag();
+			// }
 
 			Vodlist article = mVodlistList.get(position);
 			title.setText(article.getTitle());
@@ -309,10 +299,10 @@ public class VodMediaActivity extends BaseActivity {
 			final String url = article.getImageUrl();
 			// for (final String url : article.getAllImage()) {
 			if (url != null && !url.equals("")) {
-//				ImageView image = new ImageView(VodMediaActivity.this);
-//				image.setLayoutParams(new LayoutParams(
-//						LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-//				image.setAdjustViewBounds(true);
+				// ImageView image = new ImageView(VodMediaActivity.this);
+				// image.setLayoutParams(new LayoutParams(
+				// LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+				// image.setAdjustViewBounds(true);
 				image.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View arg0) {
@@ -324,14 +314,14 @@ public class VodMediaActivity extends BaseActivity {
 						VodMediaActivity.this.startActivity(intent);
 					}
 				});
-//				layout.addView(image);
+				// layout.addView(image);
 				image.setVisibility(View.VISIBLE);
 				mImageLoader.DisplayImage(url, image);
-			}else{
+			} else {
 				image.setVisibility(View.GONE);
 			}
 			// }
-			return convertView;
+			return view;
 		}
 	}
 
